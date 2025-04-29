@@ -25,13 +25,13 @@ logo = Image.open('Images\Screenshot 2025-04-28 152319.png')  # Ajusta la ruta s
 st.image(logo, use_container_width=True)
 
 st.markdown("<h2 style='text-align: center; color: #003366;'>Bienvenido al Portal de Carga de Datos</h2>", unsafe_allow_html=True)
-st.markdown("<p style='text-align: center; color: #003366;'>Por favor sube tu archivo de Excel para continuar.</p>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; color: #003366;'>Por favor sube tu archivo CSV continuar.</p>", unsafe_allow_html=True)
 
 # Separador
 st.markdown("---")
 
 # Subida de archivo
-uploaded_file = st.file_uploader("Selecciona tu archivo .XLSX, recuerda que debes cargar el archivo con MÍNIMO 5 años.", type=["xlsx"])
+uploaded_file = st.file_uploader("Selecciona tu archivo csv, recuerda que debes cargar el archivo con MÍNIMO 5 años.", type=["csv"])
 
 if uploaded_file is not None:
     st.success("✅ Archivo cargado exitosamente. ¡Pronto lo enviaremos a GCP!")
@@ -39,7 +39,7 @@ if uploaded_file is not None:
     df = None
     try:
         
-        df = pd.read_excel(uploaded_file)
+        df = pd.read_csv(uploaded_file)
         st.dataframe(df.head())  # Mostrar una vista previa del archivo
         if df.shape[1] > (12*3*5):   # 12 meses, 3 años, 5 años mínimo
             st.success("✅ El archivo contiene datos válidos.")
