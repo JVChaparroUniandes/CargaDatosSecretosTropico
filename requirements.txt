@@ -1,4 +1,5 @@
 streamlit
-PIL
+Pillow
 pandas
 numpy
+google-cloud-storage
