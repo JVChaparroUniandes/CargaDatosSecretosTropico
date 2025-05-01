@@ -70,7 +70,7 @@ if uploaded_file is not None:
         df = pd.read_csv(uploaded_file, delimiter=dialect.delimiter)
 
         st.dataframe(df.head())  # Mostrar una vista previa del archivo
-        if df.shape[1] > (12*3*5):   # 12 meses, 3 años, 5 años mínimo
+        if df.shape[1] > (3*5):   # 3 meses
             st.success("✅ El archivo contiene datos válidos.")
             blob_name = uploaded_file.name
             with st.spinner("Subiendo archivo a Google Cloud Storage..."):
