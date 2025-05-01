@@ -41,7 +41,7 @@ page_bg_img = '''
 st.markdown(page_bg_img, unsafe_allow_html=True)
 
 # Mostrar el logo
-logo = Image.open('Images\Screenshot 2025-04-28 152319.png')  # Ajusta la ruta si es necesario
+logo = Image.open('Images/Screenshot 2025-04-28 152319.png')  # Ajusta la ruta si es necesario
 st.image(logo, use_container_width=True)
 
 st.markdown("<h2 style='text-align: center; color: #003366;'>Bienvenido al Portal de Carga de Datos</h2>", unsafe_allow_html=True)
