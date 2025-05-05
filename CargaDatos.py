@@ -70,9 +70,9 @@ if uploaded_file is not None:
         df = pd.read_csv(uploaded_file, delimiter=dialect.delimiter)
 
         st.dataframe(df.head())  # Mostrar una vista previa del archivo
-        if df.shape[1] > (3*5):   # 3 meses
+        if df.shape[1] <= (6+4*5):   # 5 meses
             st.success("✅ El archivo contiene datos válidos.")
-            blob_name = uploaded_file.name
+            blob_name = 'ventas.csv'
             with st.spinner("Subiendo archivo a Google Cloud Storage..."):
                 success, msg = upload_to_gcs(uploaded_file, blob_name)
                 if success:
@@ -81,7 +81,7 @@ if uploaded_file is not None:
                     st.error("❌ Error al subir el archivo: " + msg)
 
         else:
-            st.error("❌ El archivo no contiene la cantidad de años suficientes.")
+            st.error("❌ El archivo contiene demasiados meses.")
     except Exception as e:
         st.error(f"❌ Error leyendo el archivo: {e}")
 
